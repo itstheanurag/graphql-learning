@@ -62,13 +62,18 @@ export class UserService {
     });
   }
 
-  static async deleteUser(id: number): Promise<Boolean> {
+  static async deleteUser(id: number): Promise<boolean> {
     const existingUser = await this.findById(id);
     if (!existingUser) {
       throw new Error("User not found");
     }
 
-    await this.db.user.delete({ where: { id } });
+    await this.db.$transaction([
+      this.db.post.deleteMany({ where: { authorId: id } }),
+      this.db.profile.deleteMany({ where: { userId: id } }),
+      this.db.user.delete({ where: { id } }),
+    ]);
+
     return true;
   }
 }
