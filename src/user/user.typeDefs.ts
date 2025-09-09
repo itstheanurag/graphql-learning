@@ -26,6 +26,6 @@ export const userTypeDefs = gql`
   type Mutation {
     createUser(input: CreateUserInput!): User!
     updateUser(input: UpdateUserInput!): User!
-    deleteUser(id: ID!): User
+    deleteUser(id: ID!): Boolean!
   }
 `;

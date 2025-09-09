@@ -22,10 +22,8 @@
   "dependencies": {
     "@apollo/server": "^5.0.0",
     "@as-integrations/express4": "^1.1.2",
-    "@as-integrations/express5": "^1.1.2",
     "@prisma/client": "^6.15.0",
     "apollo-server-express": "^3.13.0",
-    "body-parser": "^2.2.0",
     "express": "^4.21.2",
     "graphql": "^16.11.0"
   }

@@ -62,12 +62,13 @@ export class UserService {
     });
   }
 
-  static async deleteUser(id: number): Promise<User> {
+  static async deleteUser(id: number): Promise<Boolean> {
     const existingUser = await this.findById(id);
     if (!existingUser) {
       throw new Error("User not found");
     }
 
-    return this.db.user.delete({ where: { id } });
+    await this.db.user.delete({ where: { id } });
+    return true;
   }
 }

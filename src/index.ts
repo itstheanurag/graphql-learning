@@ -8,6 +8,7 @@ import { postResolvers } from "./Posts/post.resolvers";
 
 async function startServer() {
   const app = express();
+  app.use(express.json());
 
   const server = new ApolloServer({
     typeDefs: [userTypeDefs, postTypeDefs],
